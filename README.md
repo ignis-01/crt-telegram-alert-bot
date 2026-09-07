@@ -25,3 +25,7 @@ Render:
 If TELEGRAM_CHAT_ID is left blank, deploy the worker and send `/start` to your bot.
 The worker will detect the chat ID and send a connection confirmation.
 You can then optionally save that ID as TELEGRAM_CHAT_ID.
+
+
+## Updated CRT logic
+The alert key level is now a Daily Order Block. The sequence is: Daily rejection -> Daily OB reaction -> 4H internal/external closed-candle breakout -> 15M TBS -> Model #1 -> alert when price is at the Daily OB. This is a mechanical implementation of the supplied rules and should be backtested before live use.
