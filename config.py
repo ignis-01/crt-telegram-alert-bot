@@ -9,12 +9,9 @@ class Config:
     twelve_key: str = os.getenv("TWELVE_DATA_API_KEY", "")
     telegram_token: str = os.getenv("TELEGRAM_BOT_TOKEN", "")
     telegram_chat_id: str = os.getenv("TELEGRAM_CHAT_ID", "")
-    scan_seconds: int = int(os.getenv("SCAN_SECONDS", "60"))
-    cooldown_minutes: int = int(os.getenv("ALERT_COOLDOWN_MINUTES", "240"))
     lookback: int = int(os.getenv("LOOKBACK", "250"))
 
     symbols = {
-        # Major FX pairs
         "EURUSD": "EUR/USD",
         "GBPUSD": "GBP/USD",
         "USDJPY": "USD/JPY",
@@ -22,8 +19,6 @@ class Config:
         "AUDUSD": "AUD/USD",
         "USDCAD": "USD/CAD",
         "NZDUSD": "NZD/USD",
-
-        # Metals + crypto
         "XAUUSD": "XAU/USD",
         "XAGUSD": "XAG/USD",
         "BTCUSD": "BTC/USD",
@@ -35,5 +30,7 @@ class Config:
             missing.append("TWELVE_DATA_API_KEY")
         if not self.telegram_token:
             missing.append("TELEGRAM_BOT_TOKEN")
+        if not self.telegram_chat_id:
+            missing.append("TELEGRAM_CHAT_ID")
         if missing:
             raise RuntimeError("Missing: " + ", ".join(missing))
